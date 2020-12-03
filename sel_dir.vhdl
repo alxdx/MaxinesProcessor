@@ -13,7 +13,7 @@ architecture arq_sel_dir of sel_dir is
 begin
      process(cs, clk)
              begin
-             if (clk'event and clk = '1') then
+             if (clk' event and clk = '1') then
              case cs is
              when "11000" => direccion <= ix;
 

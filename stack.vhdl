@@ -4,7 +4,8 @@ USE ieee.numeric_std.all;
 
 entity stack is port (
 					clk: in std_logic;
-					pcout: signed(7 downto 0);
+
+					pcout: in signed(7 downto 0);
 					pila: inout signed(7 downto 0);
 					reset: in std_logic;
 					cs: in std_logic_vector (4 downto 0));

@@ -4,10 +4,10 @@ USE ieee.numeric_std.all;
 
 entity indice is port (
 			clk: in std_logic;
-		pcontrol: in std_logic_vector (7 downto 0);
+		pcontrol: in signed(7 downto 0);
 			cs: in std_logic_vector(4 downto 0);
 		reset: in std_logic;
-			ix: inout  signed(7 downto 0));
+			ix: inout signed(7 downto 0));
 end;
 architecture arq_indice of indice is
 begin

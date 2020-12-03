@@ -6,7 +6,9 @@ entity control is port(
             reset,clk: in std_logic;
                   irq: in std_logic_vector (1 downto 0);
                    rw: inout std_logic;
-               datoin: in std_logic_vector (3 downto 0);
+
+               datoin: in signed (3 downto 0);
+
              pcontrol: inout signed(7 downto 0);
                    rc: in std_logic_vector (3 downto 0);
                 pcout: in signed(7 downto 0);

@@ -4,11 +4,12 @@ USE ieee.numeric_std.all;
 
 entity pc is port(
 		clk: in std_logic;
-	pcontrol: in  signed(7 downto 0);
+
+	pcontrol: in signed(7 downto 0);
 		cs: in std_logic_vector(4 downto 0);
 		reset: in std_logic;
 		pila: in signed(7 downto 0);
-		pcout: inout signed(7 downto 0));
+		pcout: inout signed (7 downto 0));
 end pc;
 architecture arq_pc of pc is
 begin 

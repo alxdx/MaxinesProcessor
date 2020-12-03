@@ -6,12 +6,12 @@ entity regb5 is port(
 				cs:in std_logic_vector (4 downto 0);
 			clk,reset : in std_logic;
 			datoin:in signed(3 downto 0);
-				b: inout signed (3 downto 0));
-end;
+				b: inout signed(3 downto 0));
+end regb5;
 architecture impedancia of regb5 is
 begin
 		process(cs, clk, reset)
-		variable bres : signed(3 downto 0);
+		variable bres : signed (3 downto 0);
 	begin
 		if reset = '1' then
 			b <= "0000";

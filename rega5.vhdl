@@ -8,6 +8,7 @@ entity rega5 is port (
 				datoin:in signed(3 downto 0);
 				reset: in std_logic;
 						a:inout signed(3 downto 0));
+
 end rega5;
 architecture impedancia of rega5 is
 begin 
