@@ -1,18 +1,20 @@
 library ieee;
-use ieee.std_logic_l164.all ;
+use ieee.std_logic_1164.all ;
+use ieee.numeric_std.all;
+
 entity rega5 is port (
 						cs:in std_logic_vector (4 downto 0);
 						clk: in std_logic;
-				datoin:in std_logic_vector (3 downto 0);
+				datoin:in signed(3 downto 0);
 				reset: in std_logic;
-						a:inout std_logic_vector (3 downto 0));
-end;
+						a:inout signed(3 downto 0));
+end rega5;
 architecture impedancia of rega5 is
 begin 
 process(cs, clk, reset)
-variable ares:std_logic_vector (3 downto 0);
+variable ares:signed(3 downto 0);
 	begin
-		if reset = "1" then
+		if reset = '1' then
 				a <= "0000";
 		else
 				if (clk'event and clk = '1') then
@@ -20,7 +22,7 @@ variable ares:std_logic_vector (3 downto 0);
 				when "10001" =>
 				a <= datoin;
 				when "11100" =>
-				ares <= a;
+				ares := a;
 				when "11101" =>
 				a <= ares;
 				when others =>
