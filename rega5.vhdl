@@ -15,7 +15,7 @@ variable ares:std_logic_vector (3 downto 0);
 		if reset = "1" then
 				a <= "0000";
 		else
-				if (elk'event and clk = '1') then
+				if (clk'event and clk = '1') then
 			case cs is
 				when "10001" =>
 				a <= datoin;

@@ -1,8 +1,9 @@
 library ieee;
 use ieee.std_logic_l164.all;
-use work.std_arith.all;
+USE ieee.numeric_std.all;
+
 entity indice is port (
-			elk: in std_logic;
+			clk: in std_logic;
 		pcontrol: in std_logic_vector (7 downto 0);
 			cs: in std_logic_vector(4 downto 0);
 		reset: in std_logic;
@@ -15,7 +16,7 @@ begin
 		if reset = "1" then
 			ix <= "00000000";
 		else
-	if (elk'event and elk = '1') then
+	if (clk'event and clk = '1') then
 					case cs is
 					when "11010" => ix <= pcontrol;
 					when "11011" => ix <= ix + 1;

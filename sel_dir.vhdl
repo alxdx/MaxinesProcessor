@@ -1,5 +1,5 @@
 library ieee;
-use ieee.std_logic_l164.all;
+use ieee.std_logic_1164.all;
 entity sel_dir is port (
                 pcout:in std_logic_vector (7 downto 0);
                  clk:in std_logic;
@@ -9,7 +9,7 @@ entity sel_dir is port (
 end sel_dir;
 architecture arq_sel_dir of sel_dir is
 begin
-     process(es, clk)
+     process(cs, clk)
              begin
              if (clk'event and clk = '1') then
              case cs is
