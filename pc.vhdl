@@ -4,18 +4,18 @@ USE ieee.numeric_std.all;
 
 entity pc is port(
 		clk: in std_logic;
-	pcontrol: in std_logic_vector (7 downto 0);
+	pcontrol: in signed(7 downto 0);
 		cs: in std_logic_vector(4 downto 0);
 		reset: in std_logic;
-		pila: in std_logic_vector (7 downto 0);
-		pcout: inout std_logic_vector (7 downto 0)
-end;
+		pila: in signed(7 downto 0);
+		pcout: inout signed (7 downto 0));
+end pc;
 architecture arq_pc of pc is
 begin 
 	process(clk, cs, reset)
 	begin
-		if reset = "1" then
-		pc <= "00000000";
+		if reset = '1' then
+		pcout <= "00000000";
 		else
 if (clk'event and clk = '1') then
 			case cs is

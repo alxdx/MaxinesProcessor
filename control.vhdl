@@ -6,17 +6,17 @@ entity control is port(
             reset,clk: in std_logic;
                   irq: in std_logic_vector (1 downto 0);
                    rw: inout std_logic;
-               datoin: in std_logic_vector (3 downto 0);
-             pcontrol: inout std_logic_vector {7 downto 0);
+               datoin: in signed (3 downto 0);
+             pcontrol: inout signed(7 downto 0);
                    rc: in std_logic_vector (3 downto 0);
-                pcout: in std_logic_vector (7 downto 0);
+                pcout: in signed(7 downto 0);
                    cs: inout std_logic_vector (4 downto 0));
 end control;
 
 architecture arq_control of control is
   type estados is (d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10,d11, d12, d13, d14, d15, d16, d17);
   signal edo_presente, edo_futuro: estados;
-  signal f: std_logic_vector {7 downto 0);
+  signal f: signed(7 downto 0);
 begin
       proceso1: process (edo_presente, irq, reset)
             begin
@@ -29,14 +29,14 @@ begin
           case edo_presente is
                   when d0 =>
                   if irq = "10" then
-                     es <= "11100";
+                     cs <= "11100";
                      edo_futuro <= d1;
                   elsif irq = "01" then
                      cs <= "11100";
                      edo_futuro <= d1;
                   else
                      edo_futuro <= d3;
-                     cs < = "11111";
+                     cs <= "11111";
                   end if;
                   when d1 =>
                   if irq = "10" then
@@ -60,7 +60,7 @@ begin
                      rw <= '0';
                   if datoin = "0000" then
                      cs <= "00001";
-                      edo_futuro < = d2;
+                      edo_futuro <= d2;
                   elsif datoin = "0001" then
                          cs <= "00010";
                   edo_futuro <= d5; 
@@ -120,23 +120,23 @@ begin
                     edo_futuro <= d0;
                   end if;
                   else  
-                  es <= "11101";
+                  cs <= "11101";
                   edo_futuro <= d0;
                   end if;
                   when d5 =>
-                  es "10101";
+                  cs <= "10101";
                   edo_futuro <= d11;
                   when d6 =>
                   cs <= "10110";
                   rw <= '1' ;
-                  edo_futuro <= dl2; 
+                  edo_futuro <= d12; 
                   when d7 =>
                   cs <= "10110";
                   rw <='1';
                   edo_futuro <= d11;
                   when d8 =>
                   cs <= "10110";
-                  rw < = '1';
+                  rw <= '1';
                   edo_futuro <= d15;
                   when d9 =>
                   cs <= "11000";
@@ -181,7 +181,7 @@ begin
                   rw <= '0';
                   edo_futuro <= d0;
                   when d16 =>
-                  es <= "10000";
+                  cs <= "10000";
                   f(0)<= datoin(0);
                   f(1)<= datoin(1);
                   f(2)<= datoin(2);
